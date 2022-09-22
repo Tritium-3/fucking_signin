@@ -1,10 +1,7 @@
 # -*- coding:utf-8 -*-
-
 import requests, json
 from time import time
-from datetime import date
-import datetime
-print('*'*40)   
+from datetime import date 
 
 print(datetime.datetime.now())
 #登錄URL
@@ -20,7 +17,8 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'}
 
 info = {
-
+    #所在地信息（省+市+区（县） 或 直辖市+区，其间需要插入一个空格）
+    #例如 '江苏省 苏州市 姑苏区'
     'area': "江苏省 苏州市 姑苏区",          # 打卡位置（省市區以空格分隔）
     'bztcyy': "",                          # 不和前一天同城原因
     'province': "江苏省",                   # 所在省份
@@ -84,9 +82,6 @@ info['created'] = str(round(time()))
 #學號和密碼
 username = ''
 password = ''
-#所在地信息（省+市+区（县） 或 直辖市+区，其间需要插入一个空格）
-#例如 info['area'] = '江苏省 苏州市 姑苏区'
-info['area'] = ''
 
 login_data = {'username': username, 'password': password}
 #創建會話
@@ -114,6 +109,5 @@ if chk_result_dict['e']==0:
     print('[結果:]',punch_result_dict['m'])
     
 else:
-    
     print('[学号，密码]验证失败!')
 
